@@ -134,7 +134,7 @@ const resetBoard = () => {
 	// collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp
 	const squares = document.getElementsByTagName("TD");
 
-	// loops over the HTML Collections and clears out the Xs and Os
+	// loops over the HTML Collections and clears out the Xs and Os.
 	for (i = 0; i < squares.length; i++) {
 		console.log(squares[i]);
 		squares[i].innerHTML = null;
