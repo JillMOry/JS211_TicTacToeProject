@@ -18,10 +18,9 @@ console.log(board);
 
 // parseInt is updating the board in JS
 const addMarker = (id) => {
-	// debugger
+	// debugger;
 	// console.log(`We'll place a mark on square: ${id}`);
 	// console.log("id", id);
-	// checkForWin();
 	const row = parseInt(id.charAt(0));
 	const column = parseInt(id.charAt(2));
 	// checkForWin(); //gives alert but does add marker doesn't show until clicking the OK on the alert
@@ -29,19 +28,26 @@ const addMarker = (id) => {
 		playerTurn = "X";
 	} else {
 		playerTurn = "O";
-	}
-	// checkForWin(); // marker  shows but alert doesn't show until until clicking an empty square
-	document.getElementById(id).innerHTML = playerTurn;
-	checkForWin(); //marker  shows but alert doesn't show until until clicking an empty square
-	board[row][column] = playerTurn; // updates the 'let board' JS
-	// checkForWin(); //alert is thown but marker doens show up until cklicking the OK on the alert
-	console.log("board", board);
+  }
+  	board[row][column] = playerTurn; // updates the 'let board' JS
+	//checkForWin(); // marker  shows but alert doesn't show until until clicking an empty square
+  document.getElementById(id).textContent = playerTurn;
+  
+
+	//checkForWin(); //marker  shows but alert doesn't show until until clicking an empty square
+
+	//checkForWin(); //alert is thown but marker doesnt show up until cklicking the OK on the alert
+  console.log("board", board);
+  // checkForWin();
 };
 
 // is called when a square is clicked. "this" = element here.  This function updates the HTML
 const handleClick = (element) => {
-	if (!document.getElementById(element.id).innerHTML) {
-		addMarker(element.id);
+	if (!document.getElementById(element.id).textContent) {
+   
+    addMarker(element.id);
+  
+		checkForWin(); //keep this one
 	}
 };
 
@@ -49,38 +55,41 @@ const checkForWin = () => {
 	// calls each checkForWin possibility and if any are true gives a page alert,
 	if (horizontalWin() || verticalWin() || diagonalWin()) {
 		// **BONUS** you could make the dismissal of this alert window reset the board...
-		alert(`Player ${playerTurn} won!`);
+
+    // window.confirm(`Player ${playerTurn} won!`);
+    setTimeout( function ( ) { alert(`Player ${playerTurn} won!`); }, 10 );
+    
 		// document.getElementById("win").innemarHTML = `${playerTurn} WINS!`; //this works but the checkForWin needs to be initalized after
 		{
-			window.location.reload();
+		setTimeout( function(){(window.location.reload());}, 40);
 		}
 	}
 };
 
-const horizontalWin = () => {
+let horizontalWin = () => {
 	// console.log("horizontalWin");
 	if (board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") {
 		return true;
 	}
 	// console.log(board[0 && 0]);
-	if (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X") {
+	if (board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X") {
 		return true;
 	}
-	if (board[0][2] == "X" && board[1][1] == "X" && board[2][2] == "X") {
+	if (board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X") {
 		return true;
 	}
 	if (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O") {
 		return true;
 	}
-	if (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O") {
+	if (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O") {
 		return true;
 	}
-	if (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O") {
+	if (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O") {
 		return true;
 	}
 };
 
-const verticalWin = () => {
+let verticalWin = () => {
 	// console.log("verticalWin");
 
 	if (board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") {
@@ -105,7 +114,7 @@ const verticalWin = () => {
 	}
 };
 
-const diagonalWin = () => {
+let diagonalWin = () => {
 	// console.log("diagonalWin");
 
 	if (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") {
@@ -134,11 +143,141 @@ const resetBoard = () => {
 	// collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp
 	const squares = document.getElementsByTagName("TD");
 
-	// loops over the HTML Collections and clears out the Xs and Os.
-	for (i = 0; i < squares.length; i++) {
-		console.log(squares[i]);
-		squares[i].innerHTML = null;
-	}
+	// loops over the HTML Collections and clears out the Xs and Os.  
+  for (i = 0; i<squares.length; i++){
+    squares[i].innerHTML = null;
+  }
+
+
+
+// // parseInt is updating the board in JS
+// const addMarker = (id) => {
+// 	// debugger;
+// 	// console.log(`We'll place a mark on square: ${id}`);
+// 	// console.log("id", id);
+// 	// checkForWin();
+// 	const row = parseInt(id.charAt(0));
+// 	const column = parseInt(id.charAt(2));
+// 	// checkForWin(); //gives alert but does add marker doesn't show until clicking the OK on the alert
+// 	if (playerTurn === "O") {
+// 		playerTurn = "X";
+// 	} else {
+// 		playerTurn = "O";
+// 	}
+// 	//checkForWin(); // marker  shows but alert doesn't show until until clicking an empty square
+//   document.getElementById(id).innerHTML = playerTurn;
+  
+  
+// 	//checkForWin(); //marker  shows but alert doesn't show until until clicking an empty square
+// 	board[row][column] = playerTurn; // updates the 'let board' JS
+// 	//checkForWin(); //alert is thown but marker doesnt show up until cklicking the OK on the alert
+// 	console.log("board", board);
+// };
+
+// // is called when a square is clicked. "this" = element here.  This function updates the HTML
+// const handleClick = (element) => {
+// 	if (!document.getElementById(element.id).innerHTML) {
+// 		addMarker(element.id);
+// 		checkForWin();
+// 	}
+// };
+
+// const checkForWin = () => {
+// 	// calls each checkForWin possibility and if any are true gives a page alert,
+// 	if (horizontalWin() || verticalWin() || diagonalWin()) {
+// 		// **BONUS** you could make the dismissal of this alert window reset the board...
+
+// 		alert(`Player ${playerTurn} won!`);
+// 		// document.getElementById("win").innemarHTML = `${playerTurn} WINS!`; //this works but the checkForWin needs to be initalized after
+// 		{
+// 			window.location.reload();
+// 		}
+// 	}
+// };
+
+// const horizontalWin = () => {
+// 	// console.log("horizontalWin");
+// 	if (board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") {
+// 		return true;
+// 	}
+// 	// console.log(board[0 && 0]);
+// 	if (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X") {
+// 		return true;
+// 	}
+// 	if (board[0][2] == "X" && board[1][1] == "X" && board[2][2] == "X") {
+// 		return true;
+// 	}
+// 	if (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O") {
+// 		return true;
+// 	}
+// 	if (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O") {
+// 		return true;
+// 	}
+// 	if (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O") {
+// 		return true;
+// 	}
+// };
+
+// const verticalWin = () => {
+// 	// console.log("verticalWin");
+
+// 	if (board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") {
+// 		console.log("here1");
+// 		return true;
+// 	}
+// 	if (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X") {
+// 		return true;
+// 	}
+// 	if (board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X") {
+// 		return true;
+// 	}
+// 	if (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O") {
+// 		console.log("here2");
+// 		return true;
+// 	}
+// 	if (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O") {
+// 		return true;
+// 	}
+// 	if (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O") {
+// 		return true;
+// 	}
+// };
+
+// const diagonalWin = () => {
+// 	// console.log("diagonalWin");
+
+// 	if (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") {
+// 		// console.log("here1");
+// 		return true;
+// 	}
+// 	if (board[0][2] == "X" && board[1][1] == "X" && board[2][0] == "X") {
+// 		console.log("here2");
+// 		return true;
+// 	}
+// 	if (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O") {
+// 		console.log("here3");
+// 		return true;
+// 	}
+// 	if (board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O") {
+// 		console.log("here4");
+// 		return true;
+// 	}
+// };
+
+// const resetBoard = () => {
+// 	playerTurn = 0;
+// 	// sanity check: this tells us the function is being called
+// 	console.log("the board was cleared!");
+
+// 	// collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp
+// 	const squares = document.getElementsByTagName("TD");
+
+// 	// loops over the HTML Collections and clears out the Xs and Os.
+// 	for (i = 0; i < squares.length; i++) {
+// 		console.log(squares[i]);
+// 		squares[i].innerHTML = null;
+// 	}
+
 
 	// @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
 };
