@@ -8,7 +8,7 @@ console.log(board);
 
 // parseInt is updating the board in JS
 const addMarker = (id) => {
-	// debugger;
+	debugger;
 	// console.log(`We'll place a mark on square: ${id}`);
 	// console.log("id", id);
 	const row = parseInt(id.charAt(0));

@@ -1,12 +1,54 @@
+body {
+	font-family: "Calligraffitti", cursive;
+	font-family: "Shadows Into Light", cursive;
+	font-family: "Bad Script", cursive;
+	background-color: #e2decf;
+}
+
+.jumbotron {
+	border-radius: 5%;
+	background-color: #81b4df;
+}
+
+h1,
+p {
+	font-size: 7rem;
+	font-weight: bolder;
+	margin: 0 auto;
+	text-align: center;
+}
+p {
+	font-size: 1.25rem;
+}
+
+#resetButton {
+	background-color: #b5b2a6;
+	border: none;
+}
+.topRow,
+.midRow {
+	border-bottom: 3px solid black;
+}
+.vert {
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+}
+
 td {
 	height: 150px;
 	width: 150px;
 	text-align: center;
-	border: 5px solid black;
+	/* border: 0.2px solid black; */
 	font-size: 100px;
+	color: #81b4df;
+	font-weight: bold;
 }
 
 h2 {
 	font-size: 3rem;
 	padding: 5%;
+}
+
+#id {
+	margin-top: 4px;
 }
