@@ -8,7 +8,7 @@ console.log(board);
 
 // parseInt is updating the board in JS
 const addMarker = (id) => {
-	debugger;
+	// debugger;
 	// console.log(`We'll place a mark on square: ${id}`);
 	// console.log("id", id);
 	const row = parseInt(id.charAt(0));
@@ -19,6 +19,7 @@ const addMarker = (id) => {
 	} else {
 		playerTurn = "O";
 	}
+	//checkForWin(); //just for class
 	board[row][column] = playerTurn; // updates the 'let board' JS
 	document.getElementById(id).textContent = playerTurn;
 	console.log("board", board);
@@ -138,3 +139,5 @@ const resetBoard = () => {
 // 3. Reset the number of wins
 // 4. Clear the board on alert window dismissal
 // 5. Add players names and display who wins, i.e. "Congrats Emily, you won with 0s!"
+
+//
